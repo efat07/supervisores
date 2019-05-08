@@ -31,12 +31,21 @@ public class SupervisorController {
         	segundosDemora = tiempoLlamada - segundosDemora;
         	segundosDemora = Math.abs(segundosDemora);
         }
+        
+        int llamadasEnCola = contarLlamadasEnCola();
+        
     	SupervisorResponse supervisorResponse = new SupervisorResponse();
     	if(supervisor.getLlamada() != null) {
     		supervisorResponse.setIdLlamada(supervisor.getLlamada().getLlamadaId());
     	}
     	supervisorResponse.setDuracionAtendiendo(segundosDemora);
-    	supervisorResponse.setCantidadEnCola(0);
+    	supervisorResponse.setCantidadEnCola(llamadasEnCola);
     	return ResponseEntity.ok(supervisorResponse);
     }
+    
+    private int contarLlamadasEnCola() {
+		int resultado = 0;
+		//Realizar el conteo de los mensajes en la cola de mensajeria que representaría la cantidad de llamadas en espera
+		return resultado;
+	}
 }
